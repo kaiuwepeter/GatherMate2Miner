@@ -23,16 +23,21 @@ class WowheadObject:
     ids: typing.List[str]
     coordinates: dict
     gathermate_id: str
+    use_beta: bool = False
 
-    def __init__(self, name: str, ids: typing.List[str], gathermate_id: str):
+    def __init__(self, name: str, ids: typing.List[str], gathermate_id: str, use_beta: bool = False):
         self.name = name
         self.ids = ids
         self.coordinates = dict()
         self.gathermate_id = gathermate_id
+        self.use_beta = use_beta
+
+        # Use beta URL for Midnight expansion nodes
+        base_url = 'https://www.wowhead.com/beta/object=' if use_beta else 'https://www.wowhead.com/object='
 
         for object_id in self.ids:
             time.sleep(0.5)  # Rate limiting to avoid being blocked
-            result = requests.get(f'https://www.wowhead.com/object={object_id}', headers=HEADERS)
+            result = requests.get(f'{base_url}{object_id}', headers=HEADERS)
             title = html.unescape(re.search(r'<meta property="og:title" content="(.*)">', result.text).group(1))
             data = re.search(r'var g_mapperData = (.*);', result.text)
             zones = re.findall(r'myMapper.update\({\s+zone: (\d+),\s+level: \d+,\s+}\);\s+WH.setSelectedLink\(this, \'mapper\'\);\s+return false;\s+" onmousedown="return false">([^<]+)</a>', result.text, re.M)
@@ -71,10 +76,10 @@ class Zone:
     name: str
     id: str
 
-    def __init__(self, name: str, id: str):
+    def __init__(self, name: str, id: str, skip_uimap_check: bool = False):
         self.name = name
         self.id = id
-        if UIMAP[id] != name:
+        if not skip_uimap_check and id in UIMAP and UIMAP[id] != name:
             print(f"UIMap ID <> Name mismatch for {id} ({name} <> {UIMAP[id]})")
 
 
@@ -379,6 +384,13 @@ WOWHEAD_ZONE_MAP = {
     '14752': Zone("Azj-Kahet", "2255"),
     '14753': Zone("City of Threads", "2213"),
     '14771': Zone("Dornogal", "2339"),
+
+    # Midnight (Beta) - Zone IDs corrected based on Wowhead data
+    '15947': Zone("Zul'Aman", "2554", skip_uimap_check=True),
+    '15355': Zone("Harandar", "2553", skip_uimap_check=True),
+    '15968': Zone("Eversong Woods", "2552", skip_uimap_check=True),
+    '16194': Zone("Atal'Aman", "2555", skip_uimap_check=True),
+    '15458': Zone("Voidstorm", "2556", skip_uimap_check=True),
 }
 
 HERBS = [
@@ -589,6 +601,42 @@ HERBS = [
     WowheadObject(name="Crystallized Arathor's Spear", ids=['414329'], gathermate_id='1476'),
     #WowheadObject(name="Altered Arathor's Spear", ids=[''], gathermate_id='1477'), # Doesn't exist or hasn't been seen/uploaded to Wowhead yet.
     WowheadObject(name="Camouflaged Arathor's Spear", ids=['414344'], gathermate_id='1478'),
+
+    # Midnight (Beta)
+    WowheadObject(name="Argentleaf", ids=['516936'], gathermate_id='1481', use_beta=True),
+    WowheadObject(name="Wild Argentleaf", ids=['516971'], gathermate_id='1482', use_beta=True),
+    WowheadObject(name="Lush Argentleaf", ids=['516985'], gathermate_id='1483', use_beta=True),
+    WowheadObject(name="Voidbound Argentleaf", ids=['516982'], gathermate_id='1484', use_beta=True),
+    WowheadObject(name="Lightfused Argentleaf", ids=['516964'], gathermate_id='1485', use_beta=True),
+    WowheadObject(name="Primal Argentleaf", ids=['516976'], gathermate_id='1486', use_beta=True),
+
+    WowheadObject(name="Mana Lily", ids=['516937'], gathermate_id='1487', use_beta=True),
+    WowheadObject(name="Wild Mana Lily", ids=['516972'], gathermate_id='1488', use_beta=True),
+    WowheadObject(name="Lush Mana Lily", ids=['516984'], gathermate_id='1489', use_beta=True),
+    WowheadObject(name="Voidbound Mana Lily", ids=['516983'], gathermate_id='1490', use_beta=True),
+    WowheadObject(name="Lightfused Mana Lily", ids=['516963'], gathermate_id='1491', use_beta=True),
+    #WowheadObject(name="Primal Mana Lily", ids=[''], gathermate_id='1492', use_beta=True),  # Not found on Wowhead yet
+
+    WowheadObject(name="Tranquility Bloom", ids=['516932'], gathermate_id='1493', use_beta=True),
+    WowheadObject(name="Wild Tranquility Bloom", ids=['516968'], gathermate_id='1494', use_beta=True),
+    WowheadObject(name="Lush Tranquility Bloom", ids=['516988'], gathermate_id='1495', use_beta=True),
+    WowheadObject(name="Voidbound Tranquility Bloom", ids=['516979'], gathermate_id='1496', use_beta=True),
+    WowheadObject(name="Lightfused Tranquility Bloom", ids=['516967'], gathermate_id='1497', use_beta=True),
+    WowheadObject(name="Primal Tranquility Bloom", ids=['516973'], gathermate_id='1498', use_beta=True),
+
+    WowheadObject(name="Sanguithorn", ids=['516934'], gathermate_id='1499', use_beta=True),
+    WowheadObject(name="Wild Sanguithorn", ids=['516969'], gathermate_id='1500', use_beta=True),
+    WowheadObject(name="Lush Sanguithorn", ids=['516987'], gathermate_id='1501', use_beta=True),
+    WowheadObject(name="Voidbound Sanguithorn", ids=['516980'], gathermate_id='1502', use_beta=True),
+    WowheadObject(name="Lightfused Sanguithorn", ids=['516966'], gathermate_id='1503', use_beta=True),
+    WowheadObject(name="Primal Sanguithorn", ids=['516974'], gathermate_id='1504', use_beta=True),
+
+    WowheadObject(name="Azeroot", ids=['516935'], gathermate_id='1505', use_beta=True),
+    WowheadObject(name="Wild Azeroot", ids=['516970'], gathermate_id='1506', use_beta=True),
+    WowheadObject(name="Lush Azeroot", ids=['516986'], gathermate_id='1507', use_beta=True),
+    WowheadObject(name="Voidbound Azeroot", ids=['516981'], gathermate_id='1508', use_beta=True),
+    WowheadObject(name="Lightfused Azeroot", ids=['516965'], gathermate_id='1509', use_beta=True),
+    WowheadObject(name="Primal Azeroot", ids=['516975'], gathermate_id='1510', use_beta=True),
 ]
 
 ORES = [
@@ -753,6 +801,31 @@ ORES = [
     WowheadObject(name="Ironclaw Seam", ids=['413882'], gathermate_id='1241'),
 
     WowheadObject(name="Webbed Ore Deposit", ids=['430335', '430351', '430352'], gathermate_id='1242'),
+
+    # Midnight (Beta)
+    WowheadObject(name="Refulgent Copper", ids=['523281'], gathermate_id='1245', use_beta=True),
+    WowheadObject(name="Refulgent Copper Seam", ids=['523283'], gathermate_id='1246', use_beta=True),
+    WowheadObject(name="Voidbound Refulgent Copper", ids=['523287'], gathermate_id='1247', use_beta=True),
+    WowheadObject(name="Lightfused Refulgent Copper", ids=['523284'], gathermate_id='1248', use_beta=True),
+    WowheadObject(name="Rich Refulgent Copper", ids=['523282'], gathermate_id='1249', use_beta=True),
+    WowheadObject(name="Primal Refulgent Copper", ids=['523285'], gathermate_id='1250', use_beta=True),
+    WowheadObject(name="Wild Refulgent Copper", ids=['523286'], gathermate_id='1263', use_beta=True),
+
+    WowheadObject(name="Umbral Tin", ids=['523288'], gathermate_id='1251', use_beta=True),
+    WowheadObject(name="Umbral Tin Seam", ids=['523290'], gathermate_id='1252', use_beta=True),
+    WowheadObject(name="Voidbound Umbral Tin", ids=['523293'], gathermate_id='1253', use_beta=True),
+    WowheadObject(name="Lightfused Umbral Tin", ids=['523294'], gathermate_id='1254', use_beta=True),
+    WowheadObject(name="Rich Umbral Tin", ids=['523289'], gathermate_id='1255', use_beta=True),
+    #WowheadObject(name="Primal Umbral Tin", ids=[''], gathermate_id='1256', use_beta=True),  # Not found on Wowhead yet
+    WowheadObject(name="Wild Umbral Tin", ids=['523292'], gathermate_id='1264', use_beta=True),
+
+    WowheadObject(name="Brilliant Silver", ids=['523295'], gathermate_id='1257', use_beta=True),
+    WowheadObject(name="Brilliant Silver Seam", ids=['523298'], gathermate_id='1258', use_beta=True),
+    WowheadObject(name="Voidbound Brilliant Silver", ids=['523301'], gathermate_id='1259', use_beta=True),
+    WowheadObject(name="Lightfused Brilliant Silver", ids=['523303'], gathermate_id='1260', use_beta=True),
+    WowheadObject(name="Rich Brilliant Silver", ids=['523297'], gathermate_id='1261', use_beta=True),
+    WowheadObject(name="Primal Brilliant Silver", ids=['523299'], gathermate_id='1262', use_beta=True),
+    WowheadObject(name="Wild Brilliant Silver", ids=['523300'], gathermate_id='1265', use_beta=True),
 ]
 
 TREASURES = [
@@ -920,6 +993,14 @@ FISHES = [
     WowheadObject(name="Floating Deep Treasure", ids=['451676'], gathermate_id='1130'),
     #WowheadObject(name="Shadowblind Grouper School", ids=['414622'], gathermate_id=''),
     #WowheadObject(name="Whispers of the Deep", ids=['451682'], gathermate_id=''),
+
+    # Midnight (Beta)
+    WowheadObject(name="Hunter Surge", ids=['570491'], gathermate_id='1131', use_beta=True),
+    WowheadObject(name="Surface Ripple", ids=['570488'], gathermate_id='1132', use_beta=True),
+    WowheadObject(name="Bubbling Bloom", ids=['540485'], gathermate_id='1133', use_beta=True),
+    WowheadObject(name="Lost Treasures", ids=['570492'], gathermate_id='1134', use_beta=True),
+    WowheadObject(name="Sunwell Swarm", ids=['547481'], gathermate_id='1135', use_beta=True),
+    WowheadObject(name="Song Swarm", ids=['570487'], gathermate_id='1136', use_beta=True),
 ]
 
 if __name__ == '__main__':
