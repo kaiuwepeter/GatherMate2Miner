@@ -267,13 +267,46 @@ WOWHEAD_ZONE_SUPPRESSION = [
 
 # Zone to Expansion mapping for statistics
 ZONE_EXPANSION = {
+    # Classic - Kalimdor
+    "63": "CL", "76": "CL", "462": "CL", "62": "CL", "89": "CL", "66": "CL", "1": "CL", "70": "CL",
+    "77": "CL", "69": "CL", "80": "CL", "7": "CL", "10": "CL", "85": "CL", "81": "CL", "199": "CL",
+    "65": "CL", "71": "CL", "57": "CL", "64": "CL", "88": "CL", "78": "CL", "461": "CL", "83": "CL",
+    # Classic - Eastern Kingdoms
+    "14": "CL", "15": "CL", "17": "CL", "36": "CL", "42": "CL", "27": "CL", "47": "CL", "23": "CL",
+    "37": "CL", "25": "CL", "87": "CL", "48": "CL", "469": "CL", "50": "CL", "49": "CL", "32": "CL",
+    "21": "CL", "84": "CL", "51": "CL", "210": "CL", "26": "CL", "18": "CL", "90": "CL", "22": "CL",
+    "52": "CL", "56": "CL",
+    # Burning Crusade
+    "97": "TBC", "105": "TBC", "106": "TBC", "94": "TBC", "95": "TBC", "100": "TBC", "122": "TBC",
+    "107": "TBC", "109": "TBC", "104": "TBC", "111": "TBC", "110": "TBC", "108": "TBC", "103": "TBC", "102": "TBC",
+    # Wrath of the Lich King
+    "114": "WotLK", "127": "WotLK", "125": "WotLK", "115": "WotLK", "116": "WotLK", "117": "WotLK",
+    "170": "WotLK", "118": "WotLK", "119": "WotLK", "120": "WotLK", "123": "WotLK", "121": "WotLK",
+    # Cataclysm
+    "204": "Cata", "207": "Cata", "217": "Cata", "218": "Cata", "198": "Cata", "201": "Cata",
+    "194": "Cata", "205": "Cata", "174": "Cata", "244": "Cata", "245": "Cata", "241": "Cata",
+    "249": "Cata", "1527": "Cata",
+    # Mists of Pandaria
+    "422": "MoP", "418": "MoP", "379": "MoP", "507": "MoP", "504": "MoP", "371": "MoP",
+    "433": "MoP", "378": "MoP", "554": "MoP", "388": "MoP", "390": "MoP", "376": "MoP", "1530": "MoP",
+    # Warlords of Draenor
+    "588": "WoD", "525": "WoD", "534": "WoD", "535": "WoD", "539": "WoD", "542": "WoD", "543": "WoD", "550": "WoD",
+    # Legion
+    "630": "Leg", "634": "Leg", "641": "Leg", "646": "Leg", "650": "Leg", "680": "Leg", "628": "Leg", "750": "Leg",
+    "830": "Leg", "882": "Leg", "885": "Leg",  # Argus zones (Krokuun, Mac'Aree, Antoran Wastes)
+    # Battle for Azeroth
+    "1161": "BfA", "1165": "BfA", "862": "BfA", "863": "BfA", "864": "BfA", "895": "BfA", "896": "BfA", "942": "BfA",
+    "1355": "BfA", "1462": "BfA",  # Nazjatar, Mechagon
+    # Shadowlands
+    "1525": "SL", "1533": "SL", "1536": "SL", "1543": "SL", "1565": "SL", "1670": "SL",
+    "1961": "SL", "1970": "SL",  # Korthia, Zereth Mortis
     # Dragonflight
     "2022": "DF", "2023": "DF", "2024": "DF", "2025": "DF", "2085": "DF",
     "2112": "DF", "2133": "DF", "2151": "DF", "2200": "DF", "2199": "DF", "2262": "DF", "2239": "DF",
     # The War Within
     "2248": "TWW", "2215": "TWW", "2214": "TWW", "2255": "TWW", "2213": "TWW", "2339": "TWW", "2256": "TWW",
     # Midnight
-    "2552": "MD", "2553": "MD", "2554": "MD", "2555": "MD", "2556": "MD", "2557": "MD",
+    "2393": "MD", "2395": "MD", "2405": "MD", "2413": "MD", "2437": "MD", "2444": "MD", "2536": "MD", "2537": "MD", "2557": "MD",
 }
 
 
@@ -467,21 +500,22 @@ def get_zone_map():
         '15347': Zone("Undermine", "2256", skip_uimap_check=True),
 
         # Midnight (Beta) - Zone IDs corrected based on Wowhead data
-        '15947': Zone("Zul'Aman", "2554", skip_uimap_check=True),
-        '15355': Zone("Harandar", "2553", skip_uimap_check=True),
-        '15968': Zone("Eversong Woods", "2552", skip_uimap_check=True),
-        '16194': Zone("Atal'Aman", "2555", skip_uimap_check=True),
-        '15458': Zone("Voidstorm", "2556", skip_uimap_check=True),
+        '15947': Zone("Zul'Aman", "2437"),
+        '15355': Zone("Harandar", "2413"),
+        '15968': Zone("Eversong Woods", "2395"),
+        '16194': Zone("Atal'Aman", "2536"),
+        '15458': Zone("Voidstorm", "2405"),
         '15958': Zone("Masters' Perch", "2557", skip_uimap_check=True),
     }
 
 
 # ========================= NODE DEFINITIONS =========================
 
-def get_all_herbs():
-    """Return all herb definitions."""
+# ========================= CLASSIC NODES =========================
+
+def get_classic_herbs():
+    """Return Classic (Vanilla) herb definitions."""
     return [
-        # Vanilla
         WowheadObject(name="Peacebloom", ids=['1618'], gathermate_id='401'),
         WowheadObject(name="Silverleaf", ids=['1617'], gathermate_id='402'),
         WowheadObject(name="Earthroot", ids=['1619'], gathermate_id='403'),
@@ -506,10 +540,263 @@ def get_all_herbs():
         WowheadObject(name="Golden Sansam", ids=['176583'], gathermate_id='425'),
         WowheadObject(name="Dreamfoil", ids=['176584'], gathermate_id='426'),
         WowheadObject(name="Mountain Silversage", ids=['176586'], gathermate_id='427'),
+        WowheadObject(name="Plaguebloom", ids=['176587'], gathermate_id='428'),
         WowheadObject(name="Icecap", ids=['176588'], gathermate_id='429'),
         WowheadObject(name="Black Lotus", ids=['176589'], gathermate_id='431'),
     ]
 
+
+def get_classic_ores():
+    """Return Classic (Vanilla) ore definitions."""
+    return [
+        WowheadObject(name="Copper Vein", ids=['1731'], gathermate_id='201'),
+        WowheadObject(name="Tin Vein", ids=['1732'], gathermate_id='202'),
+        WowheadObject(name="Iron Deposit", ids=['1735'], gathermate_id='203'),
+        WowheadObject(name="Silver Vein", ids=['1733'], gathermate_id='204'),
+        WowheadObject(name="Gold Vein", ids=['1734'], gathermate_id='205'),
+        WowheadObject(name="Mithril Deposit", ids=['2040'], gathermate_id='206'),
+        WowheadObject(name="Truesilver Deposit", ids=['2047'], gathermate_id='208'),
+        WowheadObject(name="Small Thorium Vein", ids=['324'], gathermate_id='214'),
+        WowheadObject(name="Rich Thorium Vein", ids=['175404'], gathermate_id='215'),
+        WowheadObject(name="Dark Iron Deposit", ids=['165658'], gathermate_id='217'),
+    ]
+
+
+# ========================= TBC NODES =========================
+
+def get_tbc_herbs():
+    """Return Burning Crusade herb definitions."""
+    return [
+        WowheadObject(name="Felweed", ids=['181270'], gathermate_id='432'),
+        WowheadObject(name="Dreaming Glory", ids=['181271'], gathermate_id='433'),
+        WowheadObject(name="Terocone", ids=['181277'], gathermate_id='434'),
+        WowheadObject(name="Mana Thistle", ids=['181281'], gathermate_id='437'),
+        WowheadObject(name="Netherbloom", ids=['181279'], gathermate_id='438'),
+        WowheadObject(name="Nightmare Vine", ids=['181280'], gathermate_id='439'),
+        WowheadObject(name="Ragveil", ids=['181275'], gathermate_id='440'),
+        WowheadObject(name="Flame Cap", ids=['181276'], gathermate_id='441'),
+    ]
+
+
+def get_tbc_ores():
+    """Return Burning Crusade ore definitions."""
+    return [
+        WowheadObject(name="Fel Iron Deposit", ids=['181555'], gathermate_id='221'),
+        WowheadObject(name="Adamantite Deposit", ids=['181556'], gathermate_id='222'),
+        WowheadObject(name="Rich Adamantite Deposit", ids=['181569'], gathermate_id='223'),
+        WowheadObject(name="Khorium Vein", ids=['181557'], gathermate_id='224'),
+    ]
+
+
+# ========================= WOTLK NODES =========================
+
+def get_wotlk_herbs():
+    """Return Wrath of the Lich King herb definitions."""
+    return [
+        WowheadObject(name="Adder's Tongue", ids=['191019'], gathermate_id='443'),
+        WowheadObject(name="Goldclover", ids=['189973'], gathermate_id='446'),
+        WowheadObject(name="Icethorn", ids=['190172'], gathermate_id='447'),
+        WowheadObject(name="Lichbloom", ids=['190171'], gathermate_id='448'),
+        WowheadObject(name="Talandra's Rose", ids=['190170'], gathermate_id='449'),
+        WowheadObject(name="Tiger Lily", ids=['190169'], gathermate_id='450'),
+        WowheadObject(name="Frost Lotus", ids=['190176'], gathermate_id='453'),
+    ]
+
+
+def get_wotlk_ores():
+    """Return Wrath of the Lich King ore definitions."""
+    return [
+        WowheadObject(name="Cobalt Deposit", ids=['189978'], gathermate_id='228'),
+        WowheadObject(name="Rich Cobalt Deposit", ids=['189979'], gathermate_id='229'),
+        WowheadObject(name="Titanium Vein", ids=['191133'], gathermate_id='230'),
+        WowheadObject(name="Saronite Deposit", ids=['189980'], gathermate_id='231'),
+        WowheadObject(name="Rich Saronite Deposit", ids=['189981'], gathermate_id='232'),
+    ]
+
+
+# ========================= CATACLYSM NODES =========================
+
+def get_cata_herbs():
+    """Return Cataclysm herb definitions."""
+    return [
+        WowheadObject(name="Azshara's Veil", ids=['202749'], gathermate_id='456'),
+        WowheadObject(name="Cinderbloom", ids=['202747'], gathermate_id='457'),
+        WowheadObject(name="Stormvine", ids=['202748'], gathermate_id='458'),
+        WowheadObject(name="Heartblossom", ids=['202750'], gathermate_id='459'),
+        WowheadObject(name="Twilight Jasmine", ids=['202751'], gathermate_id='460'),
+        WowheadObject(name="Whiptail", ids=['202752'], gathermate_id='461'),
+    ]
+
+
+def get_cata_ores():
+    """Return Cataclysm ore definitions."""
+    return [
+        WowheadObject(name="Obsidium Deposit", ids=['202736'], gathermate_id='233'),
+        WowheadObject(name="Rich Obsidium Deposit", ids=['202739'], gathermate_id='239'),
+        WowheadObject(name="Elementium Vein", ids=['202738'], gathermate_id='236'),
+        WowheadObject(name="Rich Elementium Vein", ids=['202741'], gathermate_id='237'),
+        WowheadObject(name="Pyrite Deposit", ids=['202737'], gathermate_id='238'),
+        WowheadObject(name="Rich Pyrite Deposit", ids=['202740'], gathermate_id='240'),
+    ]
+
+
+# ========================= MOP NODES =========================
+
+def get_mop_herbs():
+    """Return Mists of Pandaria herb definitions."""
+    return [
+        WowheadObject(name="Golden Lotus", ids=['209354'], gathermate_id='462'),
+        WowheadObject(name="Fool's Cap", ids=['209355'], gathermate_id='463'),
+        WowheadObject(name="Snow Lily", ids=['209351'], gathermate_id='464'),
+        WowheadObject(name="Silkweed", ids=['209350'], gathermate_id='465'),
+        WowheadObject(name="Green Tea Leaf", ids=['209349'], gathermate_id='466'),
+        WowheadObject(name="Rain Poppy", ids=['209353'], gathermate_id='467'),
+    ]
+
+
+def get_mop_ores():
+    """Return Mists of Pandaria ore definitions."""
+    return [
+        WowheadObject(name="Ghost Iron Deposit", ids=['209311'], gathermate_id='241'),
+        WowheadObject(name="Rich Ghost Iron Deposit", ids=['209328'], gathermate_id='242'),
+        WowheadObject(name="Kyparite Deposit", ids=['209312'], gathermate_id='245'),
+        WowheadObject(name="Rich Kyparite Deposit", ids=['215416'], gathermate_id='246'),
+        WowheadObject(name="Trillium Vein", ids=['209313'], gathermate_id='247'),
+        WowheadObject(name="Rich Trillium Vein", ids=['209330'], gathermate_id='248'),
+    ]
+
+
+# ========================= WOD NODES =========================
+
+def get_wod_herbs():
+    """Return Warlords of Draenor herb definitions."""
+    return [
+        WowheadObject(name="Frostweed", ids=['233117'], gathermate_id='474'),
+        WowheadObject(name="Fireweed", ids=['235387'], gathermate_id='473'),
+        WowheadObject(name="Gorgrond Flytrap", ids=['235388'], gathermate_id='472'),
+        WowheadObject(name="Starflower", ids=['228574'], gathermate_id='471'),
+        WowheadObject(name="Nagrand Arrowbloom", ids=['228575'], gathermate_id='470'),
+        WowheadObject(name="Talador Orchid", ids=['237400'], gathermate_id='469'),
+        WowheadObject(name="Withered Herb", ids=['243334'], gathermate_id='475'),
+    ]
+
+
+def get_wod_ores():
+    """Return Warlords of Draenor ore definitions."""
+    return [
+        WowheadObject(name="True Iron Deposit", ids=['228493'], gathermate_id='249'),
+        WowheadObject(name="Rich True Iron Deposit", ids=['232545'], gathermate_id='250'),
+        WowheadObject(name="Blackrock Deposit", ids=['237359'], gathermate_id='251'),
+        WowheadObject(name="Rich Blackrock Deposit", ids=['232543'], gathermate_id='252'),
+    ]
+
+
+# ========================= LEGION NODES =========================
+
+def get_legion_herbs():
+    """Return Legion herb definitions."""
+    return [
+        WowheadObject(name="Aethril", ids=['244774'], gathermate_id='476'),
+        WowheadObject(name="Dreamleaf", ids=['244776'], gathermate_id='477'),
+        WowheadObject(name="Felwort", ids=['252404'], gathermate_id='478'),
+        WowheadObject(name="Fjarnskaggl", ids=['244777'], gathermate_id='479'),
+        WowheadObject(name="Foxflower", ids=['241641'], gathermate_id='480'),
+        WowheadObject(name="Starlight Rose", ids=['244778'], gathermate_id='481'),
+        WowheadObject(name="Fel-Encrusted Herb", ids=['273052'], gathermate_id='482'),
+        WowheadObject(name="Astral Glory", ids=['272782'], gathermate_id='484'),
+    ]
+
+
+def get_legion_ores():
+    """Return Legion ore definitions."""
+    return [
+        WowheadObject(name="Leystone Deposit", ids=['241726'], gathermate_id='253'),
+        WowheadObject(name="Rich Leystone Deposit", ids=['245324'], gathermate_id='254'),
+        WowheadObject(name="Leystone Seam", ids=['253280'], gathermate_id='255'),
+        WowheadObject(name="Felslate Deposit", ids=['241743'], gathermate_id='256'),
+        WowheadObject(name="Rich Felslate Deposit", ids=['245325'], gathermate_id='257'),
+        WowheadObject(name="Felslate Seam", ids=['255344'], gathermate_id='258'),
+        WowheadObject(name="Empyrium Deposit", ids=['272768'], gathermate_id='259'),
+        WowheadObject(name="Rich Empyrium Deposit", ids=['272778'], gathermate_id='260'),
+        WowheadObject(name="Empyrium Seam", ids=['272780'], gathermate_id='261'),
+    ]
+
+
+# ========================= BFA NODES =========================
+
+def get_bfa_herbs():
+    """Return Battle for Azeroth herb definitions."""
+    return [
+        WowheadObject(name="Akunda's Bite", ids=['276237'], gathermate_id='485'),
+        WowheadObject(name="Anchor Weed", ids=['276242'], gathermate_id='486'),
+        WowheadObject(name="Riverbud", ids=['276234'], gathermate_id='487'),
+        WowheadObject(name="Sea Stalks", ids=['276240'], gathermate_id='488'),
+        WowheadObject(name="Siren's Sting", ids=['276239'], gathermate_id='489'),
+        WowheadObject(name="Star Moss", ids=['276236'], gathermate_id='490'),
+        WowheadObject(name="Winter's Kiss", ids=['276238'], gathermate_id='491'),
+        WowheadObject(name="Zin'anthid", ids=['326598'], gathermate_id='492'),
+    ]
+
+
+def get_bfa_ores():
+    """Return Battle for Azeroth ore definitions."""
+    return [
+        WowheadObject(name="Monelite Deposit", ids=['276616'], gathermate_id='262'),
+        WowheadObject(name="Rich Monelite Deposit", ids=['276621'], gathermate_id='263'),
+        WowheadObject(name="Monelite Seam", ids=['276619'], gathermate_id='264'),
+        WowheadObject(name="Platinum Deposit", ids=['276618'], gathermate_id='265'),
+        WowheadObject(name="Rich Platinum Deposit", ids=['276623'], gathermate_id='266'),
+        WowheadObject(name="Storm Silver Deposit", ids=['276617'], gathermate_id='267'),
+        WowheadObject(name="Rich Storm Silver Deposit", ids=['276622'], gathermate_id='268'),
+        WowheadObject(name="Storm Silver Seam", ids=['276620'], gathermate_id='269'),
+        WowheadObject(name="Osmenite Deposit", ids=['325875'], gathermate_id='270'),
+        WowheadObject(name="Rich Osmenite Deposit", ids=['325873'], gathermate_id='271'),
+        WowheadObject(name="Osmenite Seam", ids=['325874'], gathermate_id='272'),
+    ]
+
+
+# ========================= SHADOWLANDS NODES =========================
+
+def get_sl_herbs():
+    """Return Shadowlands herb definitions."""
+    return [
+        WowheadObject(name="Death Blossom", ids=['351470'], gathermate_id='493'),
+        WowheadObject(name="Nightshade", ids=['336691'], gathermate_id='494'),
+        WowheadObject(name="Lush Nightshade", ids=['375071'], gathermate_id='1401'),
+        WowheadObject(name="Elusive Nightshade", ids=['375338'], gathermate_id='1402'),
+        WowheadObject(name="Marrowroot", ids=['336689'], gathermate_id='495'),
+        WowheadObject(name="Vigil's Torch", ids=['336688'], gathermate_id='496'),
+        WowheadObject(name="Rising Glory", ids=['336690'], gathermate_id='497'),
+        WowheadObject(name="Widowbloom", ids=['336433'], gathermate_id='498'),
+        WowheadObject(name="First Flower", ids=['370398'], gathermate_id='499'),
+        WowheadObject(name="Lush First Flower", ids=['370397'], gathermate_id='1403'),
+        WowheadObject(name="Elusive First Flower", ids=['375337'], gathermate_id='1404'),
+    ]
+
+
+def get_sl_ores():
+    """Return Shadowlands ore definitions."""
+    return [
+        WowheadObject(name="Laestrite Deposit", ids=['349898'], gathermate_id='273'),
+        WowheadObject(name="Rich Laestrite Deposit", ids=['349899'], gathermate_id='274'),
+        WowheadObject(name="Phaedrum Deposit", ids=['349982'], gathermate_id='275'),
+        WowheadObject(name="Rich Phaedrum Deposit", ids=['350087'], gathermate_id='276'),
+        WowheadObject(name="Oxxein Deposit", ids=['349981'], gathermate_id='277'),
+        WowheadObject(name="Rich Oxxein Deposit", ids=['350085'], gathermate_id='278'),
+        WowheadObject(name="Elethium Deposit", ids=['349900'], gathermate_id='280'),
+        WowheadObject(name="Rich Elethium Deposit", ids=['350082'], gathermate_id='281'),
+        WowheadObject(name="Elusive Elethium Deposit", ids=['375333'], gathermate_id='291'),
+        WowheadObject(name="Solenium Deposit", ids=['349980'], gathermate_id='282'),
+        WowheadObject(name="Rich Solenium Deposit", ids=['350086'], gathermate_id='283'),
+        WowheadObject(name="Sinvyr Deposit", ids=['349983'], gathermate_id='284'),
+        WowheadObject(name="Rich Sinvyr Deposit", ids=['350084'], gathermate_id='285'),
+        WowheadObject(name="Progenium Deposit", ids=['370400'], gathermate_id='287'),
+        WowheadObject(name="Rich Progenium Deposit", ids=['370399'], gathermate_id='288'),
+        WowheadObject(name="Elusive Progenium Deposit", ids=['375332'], gathermate_id='289'),
+    ]
+
+
+# ========================= DRAGONFLIGHT NODES =========================
 
 def get_dragonflight_herbs():
     """Return Dragonflight herb definitions."""
@@ -662,6 +949,13 @@ def get_tww_fish():
     ]
 
 
+def get_tww_treasures():
+    """Return The War Within treasure definitions."""
+    return [
+        WowheadObject(name="Disturbed Earth", ids=['422531'], gathermate_id='566'),
+    ]
+
+
 def get_midnight_fish():
     """Return Midnight (Beta) fishing pool definitions."""
     return [
@@ -719,17 +1013,19 @@ def serialize_lua_table(data: dict, table_name: str) -> str:
     return "\n".join(lines)
 
 
-def merge_gathermate_data(existing_content: str, new_herbs: dict, new_ores: dict, new_fish: dict) -> str:
+def merge_gathermate_data(existing_content: str, new_herbs: dict, new_ores: dict, new_fish: dict, new_treasures: dict = None) -> str:
     """Merge new node data into existing GatherMate2.lua content."""
 
     # Parse existing databases
     herb_match = re.search(r'GatherMate2HerbDB\s*=\s*{(.*?)}\s*(?=GatherMate2|$)', existing_content, re.DOTALL)
     mine_match = re.search(r'GatherMate2MineDB\s*=\s*{(.*?)}\s*(?=GatherMate2|$)', existing_content, re.DOTALL)
     fish_match = re.search(r'GatherMate2FishDB\s*=\s*{(.*?)}\s*(?=GatherMate2|$)', existing_content, re.DOTALL)
+    treasure_match = re.search(r'GatherMate2TreasureDB\s*=\s*{(.*?)}\s*(?=GatherMate2|$)', existing_content, re.DOTALL)
 
     existing_herbs = parse_lua_table(herb_match.group(1)) if herb_match else {}
     existing_ores = parse_lua_table(mine_match.group(1)) if mine_match else {}
     existing_fish = parse_lua_table(fish_match.group(1)) if fish_match else {}
+    existing_treasures = parse_lua_table(treasure_match.group(1)) if treasure_match else {}
 
     # Merge new data (new data overwrites conflicts)
     def merge_db(existing: dict, new: dict) -> dict:
@@ -743,6 +1039,7 @@ def merge_gathermate_data(existing_content: str, new_herbs: dict, new_ores: dict
     merged_herbs = merge_db(existing_herbs, new_herbs)
     merged_ores = merge_db(existing_ores, new_ores)
     merged_fish = merge_db(existing_fish, new_fish)
+    merged_treasures = merge_db(existing_treasures, new_treasures) if new_treasures else existing_treasures
 
     # Find GatherMate2DB section (settings)
     db_match = re.search(r'(GatherMate2DB\s*=\s*{.*?}\s*\n)', existing_content, re.DOTALL)
@@ -757,6 +1054,8 @@ def merge_gathermate_data(existing_content: str, new_herbs: dict, new_ores: dict
         output_parts.append(serialize_lua_table(merged_ores, "GatherMate2MineDB"))
     if merged_fish:
         output_parts.append(serialize_lua_table(merged_fish, "GatherMate2FishDB"))
+    if merged_treasures:
+        output_parts.append(serialize_lua_table(merged_treasures, "GatherMate2TreasureDB"))
 
     return "\n".join(output_parts)
 
@@ -833,69 +1132,78 @@ class GatherMateMinerApp:
         self.node_vars = {
             "Herbs": tk.BooleanVar(value=True),
             "Mining": tk.BooleanVar(value=True),
+            "Treasures": tk.BooleanVar(value=False),
             "Fishing": tk.BooleanVar(value=False),
         }
 
         col = 0
         for name, var in self.node_vars.items():
-            chk = tk.Checkbutton(type_frame, text=name, variable=var)
-            chk.grid(row=0, column=col, sticky="w", padx=10)
+            if name == "Fishing":
+                # Fishing is disabled - Wowhead doesn't provide coordinate data for fish pools
+                chk = tk.Checkbutton(type_frame, text=name, variable=var, state="disabled", fg="gray")
+                chk.grid(row=0, column=col, sticky="w", padx=10)
+                ToolTip(chk, "Fishing disabled\nWowhead does not provide\ncoordinate data for fishing pools")
+            else:
+                chk = tk.Checkbutton(type_frame, text=name, variable=var)
+                chk.grid(row=0, column=col, sticky="w", padx=10)
             col += 1
 
         # Expansion Selection
         exp_frame = tk.LabelFrame(main_frame, text="Expansions", padx=10, pady=5)
         exp_frame.pack(fill="x", pady=5)
 
-        # Active expansions (functional)
+        # All expansions (functional) - in chronological order
         self.expansion_vars = {
+            "Classic": tk.BooleanVar(value=False),
+            "Burning Crusade": tk.BooleanVar(value=False),
+            "Wrath of the Lich King": tk.BooleanVar(value=False),
+            "Cataclysm": tk.BooleanVar(value=False),
+            "Mists of Pandaria": tk.BooleanVar(value=False),
+            "Warlords of Draenor": tk.BooleanVar(value=False),
+            "Legion": tk.BooleanVar(value=False),
+            "Battle for Azeroth": tk.BooleanVar(value=False),
+            "Shadowlands": tk.BooleanVar(value=False),
             "Dragonflight": tk.BooleanVar(value=True),
             "The War Within": tk.BooleanVar(value=True),
             "Midnight (Beta)": tk.BooleanVar(value=False),
         }
 
-        # Disabled expansions (coming soon preview) - chronological order
-        disabled_expansions = [
-            ("Classic", "CL"),
-            ("Burning Crusade", "TBC"),
-            ("Wrath of the Lich King", "WotLK"),
-            ("Cataclysm", "Cata"),
-            ("Mists of Pandaria", "MoP"),
-            ("Warlords of Draenor", "WoD"),
-            ("Legion", "Leg"),
-            ("Battle for Azeroth", "BfA"),
-            ("Shadowlands", "SL"),
-        ]
-
-        # Row 0: Disabled expansions (Classic - MoP)
-        tk.Label(exp_frame, text="Coming Soon:", font=("Helvetica", 8, "italic"), fg="gray").grid(row=0, column=0, sticky="w")
-        col = 1
-        for name, abbrev in disabled_expansions[:5]:
-            chk = tk.Checkbutton(exp_frame, text=f"{abbrev}", state="disabled", fg="gray")
-            chk.grid(row=0, column=col, sticky="w", padx=5)
-            ToolTip(chk, f"{name}\n(Coming Soon)")
-            col += 1
-
-        # Row 1: Disabled expansions (WoD - Shadowlands)
-        col = 1
-        for name, abbrev in disabled_expansions[5:]:
-            chk = tk.Checkbutton(exp_frame, text=f"{abbrev}", state="disabled", fg="gray")
-            chk.grid(row=1, column=col, sticky="w", padx=5)
-            ToolTip(chk, f"{name}\n(Coming Soon)")
-            col += 1
-
-        # Row 2: Active expansions (DF, TWW, MD)
-        tk.Label(exp_frame, text="Active:", font=("Helvetica", 8, "bold"), fg="green").grid(row=2, column=0, sticky="w", pady=(5, 0))
-        col = 1
-        active_tooltips = {
-            "Dragonflight": "Dragonflight (10.0)\nDragon Isles zones",
-            "The War Within": "The War Within (11.0)\nKhaz Algar zones",
-            "Midnight (Beta)": "Midnight (12.0 Beta)\nQuel'Thalas zones"
+        # Expansion tooltips and abbreviations
+        expansion_info = {
+            "Classic": ("CL", "Classic (1.0)\nAzeroth zones"),
+            "Burning Crusade": ("TBC", "Burning Crusade (2.0)\nOutland zones"),
+            "Wrath of the Lich King": ("WotLK", "Wrath of the Lich King (3.0)\nNorthrend zones"),
+            "Cataclysm": ("Cata", "Cataclysm (4.0)\nCataclysm zones"),
+            "Mists of Pandaria": ("MoP", "Mists of Pandaria (5.0)\nPandaria zones"),
+            "Warlords of Draenor": ("WoD", "Warlords of Draenor (6.0)\nDraenor zones"),
+            "Legion": ("Leg", "Legion (7.0)\nBroken Isles zones"),
+            "Battle for Azeroth": ("BfA", "Battle for Azeroth (8.0)\nZandalar & Kul Tiras"),
+            "Shadowlands": ("SL", "Shadowlands (9.0)\nShadowlands zones"),
+            "Dragonflight": ("DF", "Dragonflight (10.0)\nDragon Isles zones"),
+            "The War Within": ("TWW", "The War Within (11.0)\nKhaz Algar zones"),
+            "Midnight (Beta)": ("MD", "Midnight (12.0 Beta)\nQuel'Thalas zones"),
         }
-        for name, var in self.expansion_vars.items():
-            abbrev = {"Dragonflight": "DF", "The War Within": "TWW", "Midnight (Beta)": "MD"}.get(name, name)
-            chk = tk.Checkbutton(exp_frame, text=f"{abbrev}", variable=var)
-            chk.grid(row=2, column=col, sticky="w", padx=5, pady=(5, 0))
-            ToolTip(chk, active_tooltips.get(name, name))
+
+        # Row 0: Classic expansions (CL - MoP)
+        tk.Label(exp_frame, text="Classic:", font=("Helvetica", 8, "bold"), fg="darkblue").grid(row=0, column=0, sticky="w")
+        col = 1
+        classic_exps = ["Classic", "Burning Crusade", "Wrath of the Lich King", "Cataclysm", "Mists of Pandaria"]
+        for name in classic_exps:
+            abbrev, tooltip = expansion_info[name]
+            chk = tk.Checkbutton(exp_frame, text=f"{abbrev}", variable=self.expansion_vars[name])
+            chk.grid(row=0, column=col, sticky="w", padx=5)
+            ToolTip(chk, tooltip)
+            col += 1
+
+        # Row 1: Modern expansions (WoD - MD)
+        tk.Label(exp_frame, text="Modern:", font=("Helvetica", 8, "bold"), fg="green").grid(row=1, column=0, sticky="w", pady=(5, 0))
+        col = 1
+        modern_exps = ["Warlords of Draenor", "Legion", "Battle for Azeroth", "Shadowlands", "Dragonflight", "The War Within", "Midnight (Beta)"]
+        for name in modern_exps:
+            abbrev, tooltip = expansion_info[name]
+            chk = tk.Checkbutton(exp_frame, text=f"{abbrev}", variable=self.expansion_vars[name])
+            chk.grid(row=1, column=col, sticky="w", padx=5, pady=(5, 0))
+            ToolTip(chk, tooltip)
             col += 1
 
         # Output directory selector
@@ -1075,22 +1383,79 @@ class GatherMateMinerApp:
             # Build processing queue: list of (expansion_name, node_type, nodes_list, type_key)
             processing_queue = []
 
-            # Define expansion order and their getters
+            # Define expansion order and their getters (chronological)
             expansions = [
+                ("Classic", "CL", {
+                    "herbs": get_classic_herbs,
+                    "ores": get_classic_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Burning Crusade", "TBC", {
+                    "herbs": get_tbc_herbs,
+                    "ores": get_tbc_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Wrath of the Lich King", "WotLK", {
+                    "herbs": get_wotlk_herbs,
+                    "ores": get_wotlk_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Cataclysm", "Cata", {
+                    "herbs": get_cata_herbs,
+                    "ores": get_cata_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Mists of Pandaria", "MoP", {
+                    "herbs": get_mop_herbs,
+                    "ores": get_mop_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Warlords of Draenor", "WoD", {
+                    "herbs": get_wod_herbs,
+                    "ores": get_wod_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Legion", "Leg", {
+                    "herbs": get_legion_herbs,
+                    "ores": get_legion_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Battle for Azeroth", "BfA", {
+                    "herbs": get_bfa_herbs,
+                    "ores": get_bfa_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
+                ("Shadowlands", "SL", {
+                    "herbs": get_sl_herbs,
+                    "ores": get_sl_ores,
+                    "fish": None,
+                    "treasures": None,
+                }),
                 ("Dragonflight", "DF", {
                     "herbs": get_dragonflight_herbs,
                     "ores": get_dragonflight_ores,
                     "fish": None,
+                    "treasures": None,
                 }),
                 ("The War Within", "TWW", {
                     "herbs": get_tww_herbs,
                     "ores": get_tww_ores,
                     "fish": get_tww_fish,
+                    "treasures": get_tww_treasures,
                 }),
                 ("Midnight (Beta)", "MD", {
                     "herbs": get_midnight_herbs,
                     "ores": get_midnight_ores,
                     "fish": get_midnight_fish,
+                    "treasures": None,
                 }),
             ]
 
@@ -1108,6 +1473,11 @@ class GatherMateMinerApp:
                     nodes = getters["ores"]()
                     if nodes:
                         processing_queue.append((exp_name, exp_short, "Mining", nodes, "ores"))
+
+                if self.node_vars["Treasures"].get() and getters["treasures"]:
+                    nodes = getters["treasures"]()
+                    if nodes:
+                        processing_queue.append((exp_name, exp_short, "Treasures", nodes, "treasures"))
 
                 if self.node_vars["Fishing"].get() and getters["fish"]:
                     nodes = getters["fish"]()
@@ -1127,28 +1497,68 @@ class GatherMateMinerApp:
             all_herbs = []
             all_ores = []
             all_fish = []
+            all_treasures = []
 
             # Statistics tracking
-            all_stats = {}  # {zone_id: {zone_name: str, herbs: int, ores: int, fish: int}}
+            all_stats = {}  # {zone_id: {zone_name: str, herbs: int, ores: int, fish: int, treasures: int}}
 
-            # Node cache for tracking new nodes
-            cache_file = os.path.join(out_dir, "node_cache.json")
+            # Node cache for tracking new nodes - PER EXPANSION
+            # Expansion abbreviation mapping
+            expansion_abbrevs = {
+                "Classic": "CL",
+                "Burning Crusade": "TBC",
+                "Wrath of the Lich King": "WotLK",
+                "Cataclysm": "Cata",
+                "Mists of Pandaria": "MoP",
+                "Warlords of Draenor": "WoD",
+                "Legion": "Leg",
+                "Battle for Azeroth": "BfA",
+                "Shadowlands": "SL",
+                "Dragonflight": "DF",
+                "The War Within": "TWW",
+                "Midnight (Beta)": "MD",
+            }
+
+            # Load all expansion caches and merge into old_cache
             old_cache = {}
-            new_cache = {}
+            expansion_caches = {}  # Store loaded caches per expansion
+            selected_expansions = set()  # Track which expansions are being processed
 
-            # Load previous cache
-            if os.path.exists(cache_file):
-                try:
-                    with open(cache_file, "r", encoding="utf-8") as f:
-                        cache_data = json.load(f)
-                        old_cache = cache_data.get("nodes", {})
-                        last_run = cache_data.get("last_run", "never")
-                        self.log_write(f"Loaded previous cache from: {last_run}\n")
-                        self.log_write(f"Previous total: {sum(len(v) for v in old_cache.values())} nodes\n\n")
-                except Exception as e:
-                    self.log_write(f"Could not load cache: {e}\n\n")
+            self.log_write("Loading expansion caches...\n")
+            for exp_name, exp_short, getters in expansions:
+                if not self.expansion_vars[exp_name].get():
+                    continue
+                selected_expansions.add(exp_short)
 
-            def count_node_coords(node, node_type: str):
+                # Load cache for this expansion
+                cache_file = os.path.join(out_dir, f"node_cache_{exp_short}.json")
+                if os.path.exists(cache_file):
+                    try:
+                        with open(cache_file, "r", encoding="utf-8") as f:
+                            cache_data = json.load(f)
+                            exp_cache = cache_data.get("nodes", {})
+                            expansion_caches[exp_short] = exp_cache
+                            old_cache.update(exp_cache)
+                            last_run = cache_data.get("last_run", "never")
+                            node_count = sum(len(v) for v in exp_cache.values())
+                            self.log_write(f"  {exp_short}: {node_count} nodes (last: {last_run})\n")
+                    except Exception as e:
+                        self.log_write(f"  {exp_short}: Could not load cache: {e}\n")
+                        expansion_caches[exp_short] = {}
+                else:
+                    self.log_write(f"  {exp_short}: No cache found (first run)\n")
+                    expansion_caches[exp_short] = {}
+
+            if old_cache:
+                total_cached = sum(len(v) for v in old_cache.values())
+                self.log_write(f"Total cached nodes: {total_cached}\n\n")
+            else:
+                self.log_write("No previous caches found\n\n")
+
+            # New caches per expansion
+            new_caches = {exp_short: {} for exp_short in selected_expansions}
+
+            def count_node_coords(node, node_type: str, expansion_short: str):
                 """Count total coordinates for a node."""
                 total = 0
                 new_count = 0
@@ -1156,19 +1566,19 @@ class GatherMateMinerApp:
                     total += len(coords)
                     # Track per-zone stats by type
                     if zone.id not in all_stats:
-                        all_stats[zone.id] = {"name": zone.name, "herbs": 0, "ores": 0, "fish": 0}
+                        all_stats[zone.id] = {"name": zone.name, "herbs": 0, "ores": 0, "fish": 0, "treasures": 0}
                     all_stats[zone.id][node_type] += len(coords)
 
-                    # Cache coordinates
+                    # Cache coordinates in the expansion-specific cache
                     cache_key = f"{zone.id}_{node_type}"
-                    if cache_key not in new_cache:
-                        new_cache[cache_key] = {}
+                    if cache_key not in new_caches[expansion_short]:
+                        new_caches[expansion_short][cache_key] = {}
 
                     for coord in coords:
                         coord_key = str(coord.as_gatherer_coord())
-                        new_cache[cache_key][coord_key] = node.gathermate_id
+                        new_caches[expansion_short][cache_key][coord_key] = node.gathermate_id
 
-                        # Check if this is a new node
+                        # Check if this is a new node (check against ALL old caches)
                         old_zone_cache = old_cache.get(cache_key, {})
                         if coord_key not in old_zone_cache:
                             new_count += 1
@@ -1179,6 +1589,7 @@ class GatherMateMinerApp:
             total_new_herbs = 0
             total_new_ores = 0
             total_new_fish = 0
+            total_new_treasures = 0
 
             # Process queue in order (DF herbs, DF ores, TWW herbs, TWW ores, MD herbs, MD ores)
             for exp_name, exp_short, node_type_name, nodes_list, type_key in processing_queue:
@@ -1196,7 +1607,7 @@ class GatherMateMinerApp:
                         break
                     self.log_write(f"Fetching: {node.name}")
                     node.fetch_data(self.zone_map, WOWHEAD_ZONE_SUPPRESSION)
-                    count, new_count = count_node_coords(node, type_key)
+                    count, new_count = count_node_coords(node, type_key, exp_short)
                     type_total += count
                     type_new += new_count
 
@@ -1215,6 +1626,9 @@ class GatherMateMinerApp:
                 elif type_key == "ores":
                     all_ores.extend(nodes_list)
                     total_new_ores += type_new
+                elif type_key == "treasures":
+                    all_treasures.extend(nodes_list)
+                    total_new_treasures += type_new
                 elif type_key == "fish":
                     all_fish.extend(nodes_list)
                     total_new_fish += type_new
@@ -1247,6 +1661,13 @@ class GatherMateMinerApp:
                 fish_count = sum(len(fp.coordinates.get(z, [])) for fp in all_fish for z in fp.coordinates)
                 self.log_write(f"Saved: {fish_file} ({fish_count} pools, {total_new_fish} new)\n")
 
+            if all_treasures and self.running:
+                treasure_file = os.path.join(out_dir, "Mined_TreasureData.lua")
+                with open(treasure_file, "w", encoding="utf-8") as f:
+                    f.write(str(Aggregate("Treasure", all_treasures)))
+                treasure_count = sum(len(t.coordinates.get(z, [])) for t in all_treasures for z in t.coordinates)
+                self.log_write(f"Saved: {treasure_file} ({treasure_count} treasures, {total_new_treasures} new)\n")
+
             # Write to SavedVariables if enabled
             if self.auto_write_var.get() and self.sv_path_var.get() and self.running:
                 sv_path = self.sv_path_var.get()
@@ -1268,6 +1689,7 @@ class GatherMateMinerApp:
                     new_herbs_dict = aggregate_to_dict(str(Aggregate("Herb", all_herbs))) if all_herbs else {}
                     new_ores_dict = aggregate_to_dict(str(Aggregate("Mine", all_ores))) if all_ores else {}
                     new_fish_dict = aggregate_to_dict(str(Aggregate("Fish", all_fish))) if all_fish else {}
+                    new_treasures_dict = aggregate_to_dict(str(Aggregate("Treasure", all_treasures))) if all_treasures else {}
 
                     # Create backup
                     if os.path.exists(sv_path):
@@ -1277,16 +1699,17 @@ class GatherMateMinerApp:
                         self.log_write(f"Backup created: {backup_path}\n")
 
                     # Merge and write
-                    merged_content = merge_gathermate_data(existing_content, new_herbs_dict, new_ores_dict, new_fish_dict)
+                    merged_content = merge_gathermate_data(existing_content, new_herbs_dict, new_ores_dict, new_fish_dict, new_treasures_dict)
 
                     with open(sv_path, "w", encoding="utf-8") as f:
                         f.write(merged_content)
 
-                    total_merged = len(new_herbs_dict) + len(new_ores_dict) + len(new_fish_dict)
+                    total_merged = len(new_herbs_dict) + len(new_ores_dict) + len(new_fish_dict) + len(new_treasures_dict)
                     self.log_write(f"SUCCESS: Merged data into {sv_path}\n")
-                    self.log_write(f"  Herb zones: {len(new_herbs_dict)}\n")
-                    self.log_write(f"  Ore zones:  {len(new_ores_dict)}\n")
-                    self.log_write(f"  Fish zones: {len(new_fish_dict)}\n")
+                    self.log_write(f"  Herb zones:     {len(new_herbs_dict)}\n")
+                    self.log_write(f"  Ore zones:      {len(new_ores_dict)}\n")
+                    self.log_write(f"  Fish zones:     {len(new_fish_dict)}\n")
+                    self.log_write(f"  Treasure zones: {len(new_treasures_dict)}\n")
                     self.log_write("=" * 70 + "\n")
 
                 except Exception as e:
@@ -1295,46 +1718,59 @@ class GatherMateMinerApp:
 
             # Print zone statistics with expansion abbreviations
             if all_stats and self.running:
-                self.log_write("\n" + "=" * 78 + "\n")
+                self.log_write("\n" + "=" * 86 + "\n")
                 self.log_write("=== ZONE STATISTICS ===\n")
-                self.log_write("=" * 78 + "\n")
-                self.log_write(f"{'MapID':<8} {'Zone Name':<26} {'Exp':<5} {'Herbs':>8} {'Ores':>8} {'Fish':>8} {'Total':>8}\n")
-                self.log_write("-" * 78 + "\n")
+                self.log_write("=" * 86 + "\n")
+                self.log_write(f"{'MapID':<8} {'Zone Name':<26} {'Exp':<5} {'Herbs':>8} {'Ores':>8} {'Treas':>8} {'Fish':>8} {'Total':>8}\n")
+                self.log_write("-" * 86 + "\n")
 
                 total_herbs = 0
                 total_ores = 0
+                total_treasures = 0
                 total_fish = 0
 
                 for zone_id in sorted(all_stats.keys(), key=lambda x: int(x)):
                     info = all_stats[zone_id]
-                    zone_total = info['herbs'] + info['ores'] + info['fish']
+                    zone_total = info['herbs'] + info['ores'] + info['treasures'] + info['fish']
                     total_herbs += info['herbs']
                     total_ores += info['ores']
+                    total_treasures += info['treasures']
                     total_fish += info['fish']
                     exp_abbrev = ZONE_EXPANSION.get(zone_id, "???")
-                    self.log_write(f"{zone_id:<8} {info['name']:<26} {exp_abbrev:<5} {info['herbs']:>8} {info['ores']:>8} {info['fish']:>8} {zone_total:>8}\n")
+                    self.log_write(f"{zone_id:<8} {info['name']:<26} {exp_abbrev:<5} {info['herbs']:>8} {info['ores']:>8} {info['treasures']:>8} {info['fish']:>8} {zone_total:>8}\n")
 
-                self.log_write("-" * 78 + "\n")
-                grand_total = total_herbs + total_ores + total_fish
-                self.log_write(f"{'TOTAL':<8} {'':<26} {'':<5} {total_herbs:>8} {total_ores:>8} {total_fish:>8} {grand_total:>8}\n")
+                self.log_write("-" * 86 + "\n")
+                grand_total = total_herbs + total_ores + total_treasures + total_fish
+                self.log_write(f"{'TOTAL':<8} {'':<26} {'':<5} {total_herbs:>8} {total_ores:>8} {total_treasures:>8} {total_fish:>8} {grand_total:>8}\n")
+                self.log_write("=" * 86 + "\n")
+
+            # Save per-expansion caches and show new nodes summary
+            if new_caches and self.running:
+                # Calculate total new nodes
+                total_new = total_new_herbs + total_new_ores + total_new_treasures + total_new_fish
+
+                # Save each expansion cache separately
+                self.log_write("\n" + "=" * 70 + "\n")
+                self.log_write("=== SAVING EXPANSION CACHES ===\n")
                 self.log_write("=" * 70 + "\n")
 
-            # Save cache and show new nodes summary
-            if new_cache and self.running:
-                # Calculate total new nodes
-                total_new = total_new_herbs + total_new_ores + total_new_fish
+                for exp_short, exp_cache in new_caches.items():
+                    if not exp_cache:
+                        continue
 
-                # Save cache to JSON
-                cache_data = {
-                    "last_run": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    "nodes": new_cache
-                }
-                try:
-                    with open(cache_file, "w", encoding="utf-8") as f:
-                        json.dump(cache_data, f, indent=2)
-                    self.log_write(f"\nCache saved to: {cache_file}\n")
-                except Exception as e:
-                    self.log_write(f"\nFailed to save cache: {e}\n")
+                    cache_file = os.path.join(out_dir, f"node_cache_{exp_short}.json")
+                    cache_data = {
+                        "expansion": exp_short,
+                        "last_run": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                        "nodes": exp_cache
+                    }
+                    try:
+                        with open(cache_file, "w", encoding="utf-8") as f:
+                            json.dump(cache_data, f, indent=2)
+                        node_count = sum(len(v) for v in exp_cache.values())
+                        self.log_write(f"  {exp_short}: {node_count} nodes saved\n")
+                    except Exception as e:
+                        self.log_write(f"  {exp_short}: Failed to save cache: {e}\n")
 
                 # Show new nodes summary
                 self.log_write("\n" + "=" * 70 + "\n")
@@ -1354,7 +1790,7 @@ class GatherMateMinerApp:
                         self.log_write("\nNo new nodes since last run.\n")
                 else:
                     self.log_write("First run - all nodes are considered new.\n")
-                    total_cache_nodes = sum(len(v) for v in new_cache.values())
+                    total_cache_nodes = sum(sum(len(v) for v in cache.values()) for cache in new_caches.values())
                     self.log_write(f"Total nodes cached: {total_cache_nodes}\n")
                     self.log_write("=" * 70 + "\n")
 
